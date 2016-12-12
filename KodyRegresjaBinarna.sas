@@ -129,58 +129,80 @@ format gndr gndr_f.;
 run;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-proc format;
-value domicil_f
-1='Du¿e miasto'
-2='Ma³e miasto'
-3='Wieœ';
-value tvpol_f
-1 = 'Mniej niz 0,5h'
-2 = 'Wiecej niz 0,5h';
-value polintr_f
-1 = 'Bardzo zainteresowany'
-2 = 'Zainteresowany'
-3 = 'Nie zainteresowany';
-value ipfrule_f
-1 = 'Wa¿ne'
-2 = 'Ma³o wa¿ne'
-3 = 'Niewa¿ne';
-value impfree_f
-1 = 'Wa¿ne'
-2 = 'Trochê wa¿ne'
-3 = 'Niewa¿ne';
-value impsafe_f
-1 = 'Wa¿ne'
-2 = 'Ma³o wa¿ne';
-value ipadvnt_f  
-1 = 'Wa¿ne'
-2 = 'Niewa¿ne';
-value gndr_f
-1 = 'M'
-2 = 'K';
+proc freq data=RL.rl_bin;
+table health;
+weight dweight;
+title "Rozk³ad zmiennej 'health'";
 run;
 
-data out.zbior2;
-set out.zbior2;
-format domicil domicil_f.;
-format tvpol tvpol_f.;
-format polintr polintr_f.;
-format ipfrule ipfrule_f.;
-format impfree impfree_f.;
-format impsafe impsafe_f.;
-format impadvnt impadvnt_f.;
-format gndr gndr_f.;
-run;
+/* Kod dla wykresów rozk³adu zmiennych objaœniaj¹cych wzglêdem zmiennej 'health' */
+	PATTERN1 COLOR=RED;
+	PATTERN2 COLOR=GREEN;
+Legend1
+	FRAME
+	POSITION = (BOTTOM CENTER OUTSIDE)
+	LABEL=(   "Subiektywny stan zdrowia");
+Axis1
+	STYLE=1
+	WIDTH=1
+	MINOR=NONE;
+Axis2
+	STYLE=1
+	WIDTH=1
+	LABEL=( FONT='Arial /b'   "Rozk³ad aktywnoœci fizycznej");
+TITLE;
+TITLE1 "Rozk³ad zmiennej dosprt wzglêdem zmiennej health";
+PROC GCHART DATA=RL.RL_BIN;
+	VBAR dosprt / SUBGROUP=health
+	CLIPREF
+FRAME	DISCRETE
+	TYPE=FREQ
+	INSIDE=PCT
+	LEGEND=LEGEND1
+	COUTLINE=BLACK
+	RAXIS=AXIS1
+	MAXIS=AXIS2;
+RUN; 
+QUIT;
+
+
+/*Procedura PROC LOGISTIC u¿yta do stworzenia modelu regresji logistycznej binarnej*/
+PROC LOGISTIC DATA=RL.rl_bin
+		PLOTS(ONLY)=ODDSRATIO
+		PLOTS(ONLY)=ROC;
+	CLASS gndr 	(PARAM=REF REF=1) slprl 	(PARAM=REF REF=1) alcfreq 	(PARAM=REF REF=1) cgtsmke 	(PARAM=REF REF=3) dosprt 	(PARAM=REF REF=1) domicil 	(PARAM=ORDINAL);
+	WEIGHT dweight;
+	MODEL health (Event = '1')=agea gndr slprl alcfreq cgtsmke dosprt domicil /
+		SELECTION=STEPWISE
+		SLE=0.05
+		SLS=0.05
+		INCLUDE=0
+		CORRB
+		COVB
+		INFLUENCE
+		LACKFIT
+		AGGREGATE SCALE=NONE
+		RSQUARE
+		LINK=LOGIT
+		CLPARM=BOTH
+		CLODDS=BOTH
+		ALPHA=0.05
+	;
+
+	OUTPUT OUT=RL.rl_bin_pred(LABEL="Statystyki i prognozy regresji logistycznej")
+		PREDPROBS=INDIVIDUAL
+		RESCHI=reschi_health 
+		RESDEV=resdev_health 
+		DIFCHISQ=difchisq_health 
+		DIFDEV=difdev_health ;
+RUN;
+QUIT;
+
+
+
+
+
+
+
+
 
