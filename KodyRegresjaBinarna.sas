@@ -129,7 +129,7 @@ format gndr gndr_f.;
 run;
 
 
-proc freq data=RL.rl_bin;
+proc freq data=out.rl_bin;
 table health;
 weight dweight;
 title "Rozk³ad zmiennej 'health'";
@@ -152,7 +152,7 @@ Axis2
 	LABEL=( FONT='Arial /b'   "Rozk³ad aktywnoœci fizycznej");
 TITLE;
 TITLE1 "Rozk³ad zmiennej dosprt wzglêdem zmiennej health";
-PROC GCHART DATA=RL.RL_BIN;
+PROC GCHART DATA=out.RL_BIN;
 	VBAR dosprt / SUBGROUP=health
 	CLIPREF
 FRAME	DISCRETE
@@ -167,10 +167,10 @@ QUIT;
 
 
 /*Procedura PROC LOGISTIC u¿yta do stworzenia modelu regresji logistycznej binarnej*/
-PROC LOGISTIC DATA=RL.rl_bin
+PROC LOGISTIC DATA=out.rl_bin
 		PLOTS(ONLY)=ODDSRATIO
 		PLOTS(ONLY)=ROC;
-	CLASS gndr 	(PARAM=REF REF=1) slprl 	(PARAM=REF REF=1) alcfreq 	(PARAM=REF REF=1) cgtsmke 	(PARAM=REF REF=3) dosprt 	(PARAM=REF REF=1) domicil 	(PARAM=ORDINAL);
+	CLASS gndr 	(PARAM=REF REF='1') slprl 	(PARAM=REF REF='1') alcfreq 	(PARAM=REF REF='1') cgtsmke 	(PARAM=REF REF='3') dosprt 	(PARAM=REF REF='1') domicil 	(PARAM=ORDINAL);
 	WEIGHT dweight;
 	MODEL health (Event = '1')=agea gndr slprl alcfreq cgtsmke dosprt domicil /
 		SELECTION=STEPWISE
@@ -189,7 +189,7 @@ PROC LOGISTIC DATA=RL.rl_bin
 		ALPHA=0.05
 	;
 
-	OUTPUT OUT=RL.rl_bin_pred(LABEL="Statystyki i prognozy regresji logistycznej")
+	OUTPUT OUT=out.rl_bin_pred(LABEL="Statystyki i prognozy regresji logistycznej")
 		PREDPROBS=INDIVIDUAL
 		RESCHI=reschi_health 
 		RESDEV=resdev_health 
