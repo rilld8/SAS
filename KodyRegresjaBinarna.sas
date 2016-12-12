@@ -166,7 +166,7 @@ RUN;
 QUIT;
 
 
-/*Procedura PROC LOGISTIC u¿yta do stworzenia modelu regresji logistycznej binarnej*/
+/*Procedura PROC LOGISTIC u¿yta do stworzenia modelu regresji logistycznej binarnej z krokowym wyborem zmiennych*/
 PROC LOGISTIC DATA=out.rl_bin
 		PLOTS(ONLY)=ODDSRATIO
 		PLOTS(ONLY)=ROC;
