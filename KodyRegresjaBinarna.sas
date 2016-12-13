@@ -165,6 +165,39 @@ FRAME	DISCRETE
 RUN; 
 QUIT;
 
+/*Procedura PROC LOGISTIC u¿yta do stworzenia modelu regresji logistycznej binarnej dla wszystkich zmiennych*/
+
+PROC LOGISTIC DATA=out.rl_bin
+		PLOTS(ONLY)=ODDSRATIO
+		PLOTS(ONLY)=ROC;
+	CLASS gndr 	(PARAM=REF REF='1') slprl 	(PARAM=REF REF='1') alcfreq 	(PARAM=REF REF='1') cgtsmke 	(PARAM=REF REF='3') dosprt 	(PARAM=REF REF='1') domicil 	(PARAM=ORDINAL);
+	WEIGHT dweight;
+	MODEL health (Event = '1')=agea gndr slprl alcfreq cgtsmke dosprt domicil /
+		SELECTION=NONE
+		SLE=0.05
+		SLS=0.05
+		INCLUDE=0
+		CORRB
+		COVB
+		INFLUENCE
+		LACKFIT
+		AGGREGATE SCALE=NONE
+		RSQUARE
+		LINK=LOGIT
+		CLPARM=BOTH
+		CLODDS=BOTH
+		ALPHA=0.05
+	;
+
+	OUTPUT OUT=out.rl_bin_pred(LABEL="Statystyki i prognozy regresji logistycznej")
+		PREDPROBS=INDIVIDUAL
+		RESCHI=reschi_health 
+		RESDEV=resdev_health 
+		DIFCHISQ=difchisq_health 
+		DIFDEV=difdev_health ;
+RUN;
+QUIT;
+
 
 /*Procedura PROC LOGISTIC u¿yta do stworzenia modelu regresji logistycznej binarnej z krokowym wyborem zmiennych*/
 PROC LOGISTIC DATA=out.rl_bin
@@ -197,6 +230,8 @@ PROC LOGISTIC DATA=out.rl_bin
 		DIFDEV=difdev_health ;
 RUN;
 QUIT;
+
+
 
 
 
