@@ -170,9 +170,9 @@ QUIT;
 PROC LOGISTIC DATA=out.rl_bin
 		PLOTS(ONLY)=ODDSRATIO
 		PLOTS(ONLY)=ROC;
-	CLASS gndr 	(PARAM=REF REF='1') slprl 	(PARAM=REF REF='1') alcfreq 	(PARAM=REF REF='1') cgtsmke 	(PARAM=REF REF='3') dosprt 	(PARAM=REF REF='1') domicil 	(PARAM=ORDINAL);
+	CLASS gndr 	(PARAM=REF REF='1') slprl 	(PARAM=REF REF='1') alcfreq 	(PARAM=REF REF='1') cgtsmke 	(PARAM=REF REF='3') dosprt 	(PARAM=REF REF='1') domicil (PARAM=ORDINAL);
 	WEIGHT dweight;
-	MODEL health (Event = '1')=agea gndr slprl alcfreq cgtsmke dosprt domicil  /
+	MODEL health (Event = '1')=agea gndr slprl alcfreq cgtsmke dosprt domicil slprl*alcfreq /
 		SELECTION=NONE
 		SLE=0.05
 		SLS=0.05
