@@ -149,15 +149,15 @@ Axis1
 Axis2
 	STYLE=1
 	WIDTH=1
-	LABEL=( FONT='Arial /b'   "Rozk³ad aktywnoœci fizycznej");
+	LABEL=( FONT='Arial /b'   "Rozk³ad wieku");
 TITLE;
-TITLE1 "Rozk³ad zmiennej dosprt wzglêdem zmiennej health";
+TITLE1 "Rozk³ad zmiennej agea wzglêdem zmiennej health";
 PROC GCHART DATA=out.RL_BIN;
-	VBAR dosprt / SUBGROUP=health
+	VBAR agea / SUBGROUP=health
 	CLIPREF
 FRAME	DISCRETE
 	TYPE=FREQ
-	INSIDE=PCT
+	
 	LEGEND=LEGEND1
 	COUTLINE=BLACK
 	RAXIS=AXIS1
@@ -170,9 +170,9 @@ QUIT;
 PROC LOGISTIC DATA=out.rl_bin
 		PLOTS(ONLY)=ODDSRATIO
 		PLOTS(ONLY)=ROC;
-	CLASS gndr 	(PARAM=REF REF='1') slprl 	(PARAM=REF REF='1') alcfreq 	(PARAM=REF REF='1') cgtsmke 	(PARAM=REF REF='3') dosprt 	(PARAM=REF REF='1') domicil (PARAM=ORDINAL);
+	CLASS gndr 	(PARAM=REF REF='1') slprl 	(PARAM=REF REF='1') eatveg (PARAM=REF REF='2') alcfreq 	(PARAM=REF REF='1') cgtsmke 	(PARAM=REF REF='3') dosprt 	(PARAM=REF REF='1') domicil (PARAM=ORDINAL);
 	WEIGHT dweight;
-	MODEL health (Event = '1')=agea gndr slprl alcfreq cgtsmke dosprt domicil slprl*alcfreq /
+	MODEL health (Event = '1')=agea gndr slprl eatveg alcfreq cgtsmke dosprt domicil slprl*alcfreq /
 		SELECTION=NONE
 		SLE=0.05
 		SLS=0.05
@@ -203,9 +203,9 @@ QUIT;
 PROC LOGISTIC DATA=out.rl_bin
 		PLOTS(ONLY)=ODDSRATIO
 		PLOTS(ONLY)=ROC;
-	CLASS gndr 	(PARAM=REF REF='1') slprl 	(PARAM=REF REF='1') alcfreq 	(PARAM=REF REF='1') cgtsmke 	(PARAM=REF REF='3') dosprt 	(PARAM=REF REF='1') domicil 	(PARAM=ORDINAL);
+	CLASS gndr 	(PARAM=REF REF='1') slprl 	(PARAM=REF REF='1') eatveg (PARAM=REF REF='2') alcfreq (PARAM=REF REF='1') cgtsmke 	(PARAM=REF REF='3') dosprt 	(PARAM=REF REF='1') domicil 	(PARAM=ORDINAL);
 	WEIGHT dweight;
-	MODEL health (Event = '1')=agea gndr slprl alcfreq cgtsmke dosprt domicil slprl*alcfreq /
+	MODEL health (Event = '1')=agea gndr slprl eatveg alcfreq cgtsmke dosprt domicil slprl*alcfreq /
 		SELECTION=STEPWISE
 		SLE=0.05
 		SLS=0.05
@@ -221,7 +221,8 @@ PROC LOGISTIC DATA=out.rl_bin
 		CLODDS=BOTH
 		ALPHA=0.05
 	;
-
+RUN;
+QUIT;
 	OUTPUT OUT=out.rl_bin_pred(LABEL="Statystyki i prognozy regresji logistycznej")
 		PREDPROBS=INDIVIDUAL
 		RESCHI=reschi_health 
