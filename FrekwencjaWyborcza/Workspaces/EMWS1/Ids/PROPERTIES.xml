@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  DataSource="deessdm" Scope="LOCAL" Role="RAW" Library="SASUSER" Table="DE_ESS_DM"
+ NCols="27" NObs="2806" NBytes="656384" Segment="" DataSourceRole="RAW" OutputType="VIEW"
+ ForceRun="N" ComputeStatistics="N" DataSelection="DATASOURCE" NewTable="" MetaAdvisor="BASIC"
+ ApplyIntervalLevelLowerLimit="Y" IntervalLowerLimit="20" ApplyMaxPercentMissing="Y"
+ MaxPercentMissing="50" ApplyMaxClassLevels="Y" MaxClassLevels="20" IdentifyEmptyColumns="Y"
+ VariableValidation="STRICT" NewVariableRole="REJECT" DropMapVariables="Y" DsId="deessdm"
+ DsSampleName="" DsSampleSizeType="" DsSampleSize="" DsCreatedBy="rilld8" DsCreateDate="1797465099.4"
+ DsModifiedBy="rilld8" DsModifyDate="1797465099.4" DsScope="LOCAL" Sample="D" SampleSizeType="PERCENT"
+ SampleSizePercent="20" SampleSizeObs="10000" DBPassThrough="Y" RunAction="Train"
+ Component="DataSource" RawCreateTime="1797465111.2" CreateTime="15DEC2016:23:51:51"
+ Description="" Data="SASUSER.DE_ESS_DM" CMeta="WORK.M1L48D6M" RunId="f4c23f94-2c96-45cb-a448-2fef2bf9b8ea"
+>
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES/>
+</_ROOT_>

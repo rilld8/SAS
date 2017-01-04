@@ -1,0 +1,64 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Podsumowanie zmiennych
+
+           Poziom       Liczba
+ Rola      miary      wystąpień
+
+COST      INTERVAL         1   
+INPUT     INTERVAL        22   
+INPUT     NOMINAL          3   
+TARGET    BINARY           1   
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Atrybuty tabeli wynikowej
+
+Atrybut                    Wartość
+
+Tabela wynikowa            EMWS1.Ids_DATA
+Typ zmiennej wynikowej     Widok         
+Porzucone zmienne          0             
+Rola eksploracji danych    Surowe        
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Atrybuty tabeli wejściowej
+
+Atrybut                                        Wartość
+
+Źródło danych                                  deessdm            
+                                                                  
+Nazwa biblioteki                               SASUSER            
+Nazwa elementu biblioteki                      DE_ESS_DM          
+Etykieta zbioru                                                   
+Specjalny typ zbioru (z TYPE=)                                    
+Obserwacji w zbiorze                           2806               
+Nazwa mechanizmu                               V9                 
+Data utworzenia                                15.12.2016 13:28:32
+Data ostatniej modyfikacji                     15.12.2016 13:28:32
+Usuniętych obserwacji w zbiorze                0                  
+Użycie zmiennej w indeksach                    NONE               
+Typ elementu biblioteki                        DATA               
+Liczba indeksów zbioru                         0                  
+Ochrona hasłem (READ WRITE ALTER)              ---                
+Flagi aktualizacji (PROTECT CONTRIBUTE ADD)    ---                
+Procedura kompresji                            NO                 
+Odzyskiwanie miejsca                           NO                 
+Posortowane i/lub po walidacji                 .                  
+Położenie zmiennej w warunku SORTEDBY          .                  
+Zestaw znaków systemu operacyjnego                                
+Kolejność zestawiania                                             
+Opcja sortowania: Bez powtarzania kluczy       NO                 
+Opcja sortowania: Bez powtarzania rekordów     NO                 
+Procedura szyfrowania                          NO                 
+Wskaż obserwacje                               YES                
+Maksymalna liczba generacji                    0                  
+Numer generacji                                .                  
+Numer następnej generacji                      .                  
+Przekodowane zmienne znakowe                   YES                
+Zmienne                                        27                 

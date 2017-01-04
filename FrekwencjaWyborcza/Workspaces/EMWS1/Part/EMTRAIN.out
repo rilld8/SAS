@@ -1,0 +1,26 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Podsumowanie zmiennych
+
+           Poziom       Liczba
+ Rola      miary      wystąpień
+
+COST      INTERVAL         1   
+INPUT     INTERVAL        22   
+INPUT     NOMINAL          3   
+TARGET    BINARY           1   
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Podsumowanie partycjonowania
+
+                                     Liczba
+Typ                Zbiór           obserwacji
+
+DATA        EMWS1.Ids_DATA            2806   
+TRAIN       EMWS1.Part_TRAIN          1681   
+VALIDATE    EMWS1.Part_VALIDATE        561   
+TEST        EMWS1.Part_TEST            564   

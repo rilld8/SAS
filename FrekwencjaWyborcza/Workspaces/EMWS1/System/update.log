@@ -1,0 +1,113 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1 
+Traverser: Traverser invoked.  MPCONNECT command is sas. 
+Traverser: Beginning flow traversal 
+*------------------------------------------------------------* 
+* 
+* Ids : Beginning Update 
+* datetime : 30DEC2016:08:18:59 
+* 
+*------------------------------------------------------------* 
+11291      %let _HPDMGRIDHOST=;
+11292      %let _HPDMGRIDINSTALLLOC=;
+11293      %let _HPDMGRIDDATASERVER=;
+11294      %hpdm_gridSetOPtions;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+*------------------------------------------------------------* 
+* 
+* Ids : End Update 
+* datetime : 30DEC2016:08:18:59 
+* 
+*------------------------------------------------------------* 
+traverser_readyNode_note 
+*------------------------------------------------------------* 
+* 
+* Part : Beginning Update 
+* datetime : 30DEC2016:08:19:00 
+* 
+*------------------------------------------------------------* 
+11312      data _null_;
+11313      set EMWS1.Ids_CMeta_DATA (obs=1);
+11314      run;
+
+NOTE: There were 1 observations read from the data set EMWS1.IDS_CMETA_DATA.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11315      data _null_;
+11316      set EMWS1.Ids_CMeta_DATA (obs=1);
+11317      run;
+
+NOTE: There were 1 observations read from the data set EMWS1.IDS_CMETA_DATA.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11318      data _null_;
+11319      set EMWS1.Ids_CMeta_DATA (obs=1);
+11320      run;
+
+NOTE: There were 1 observations read from the data set EMWS1.IDS_CMETA_DATA.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11321      *------------------------------------------------------------*;
+11322      * Part: Update Variables Set;
+11323      *------------------------------------------------------------*;
+
+11324      data EMWS1.Part_VariableSet;
+11325      length PARTITIONROLE $14;
+11326      set EMWS1.Ids_CMeta_DATA;
+11327      run;
+
+NOTE: Variable PARTITIONROLE is uninitialized.
+NOTE: There were 27 observations read from the data set EMWS1.IDS_CMETA_DATA.
+NOTE: The data set EMWS1.PART_VARIABLESET has 27 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+11328      * Part: End of Update Variables Set;
+11329      *------------------------------------------------------------*;
+
+11330      *------------------------------------------------------------*;
+11331      * Part: Computing metadata for TRAIN data;
+11332      *------------------------------------------------------------*;
+
+11343      %let _HPDMGRIDHOST=;
+11344      %let _HPDMGRIDINSTALLLOC=;
+11345      %let _HPDMGRIDDATASERVER=;
+11346      %hpdm_gridSetOPtions;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+*------------------------------------------------------------* 
+* 
+* Part : End Update 
+* datetime : 30DEC2016:08:19:00 
+* 
+*------------------------------------------------------------* 
+Traverser: Run Completed 
+11347      proc printto;
+11348      run;
+

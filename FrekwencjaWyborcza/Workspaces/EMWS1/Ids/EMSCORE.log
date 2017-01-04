@@ -1,0 +1,94 @@
+MPRINT(EM_DIAGRAM):    data _null_;
+MPRINT(EM_DIAGRAM):   call symput('NLDATE', strip(put(date(), NLDATE.)));
+MPRINT(EM_DIAGRAM):   call symput('NLTIME', strip(put(datetime(), NLTIME.)));
+MPRINT(EM_DIAGRAM):   run;
+MPRINT(EM_DIAGRAM):   data _null_;
+MPRINT(EM_DIAGRAM):   nldate= sasmsg("sashelp.dmine", "log_date_note", 'N', "29 grudnia 2016" );
+MPRINT(EM_DIAGRAM):   nltime= sasmsg("sashelp.dmine", "log_time_note", 'N', "19:25:48" );
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   put "* Log scoringu";
+MPRINT(EM_DIAGRAM):   put nldate;
+MPRINT(EM_DIAGRAM):   put nltime;
+MPRINT(EM_DIAGRAM):   put "*------------------------------------------------------------*";
+MPRINT(EM_DIAGRAM):   run;
+*------------------------------------------------------------*
+* Log scoringu
+Data:                29 grudnia 2016
+Czas:                19:25:48
+*------------------------------------------------------------*
+MPRINT(EM_DIAGRAM):    filename O368H03N "C:\Studia\DataMining\SASEM\FrekwencjaWyborcza\Workspaces\EMWS1\Ids\EMSCORE.out" encoding="UTF-8" NOBOM;
+MPRINT(EM_DIAGRAM):   proc printto print=O368H03N new;
+MPRINT(EM_DIAGRAM):   run;
+21699      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):    *------------------------------------------------------------*;
+21700      * Ids: Computing metadata for DATA data;
+MPRINT(EM_DIAGRAM):   * Ids: Computing metadata for DATA data;
+21701      *------------------------------------------------------------*;
+MPRINT(EM_DIAGRAM):   *------------------------------------------------------------*;
+
+NOTE: View EMWS1.IDS_DATA.VIEW used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.04 seconds
+      
+21702      data EMWS1.Ids_EMINFO;
+MPRINT(EM_DIAGRAM):    data EMWS1.Ids_EMINFO;
+21703      length TARGET KEY $32 DATA $43;
+MPRINT(EM_DIAGRAM):   length TARGET KEY $32 DATA $43;
+21704      TARGET="";
+MPRINT(EM_DIAGRAM):   TARGET="";
+21705      KEY="IDSTABLE";
+MPRINT(EM_DIAGRAM):   KEY="IDSTABLE";
+21706      DATA="SASUSER.DE_ESS_DM";
+MPRINT(EM_DIAGRAM):   DATA="SASUSER.DE_ESS_DM";
+21707      output;
+MPRINT(EM_DIAGRAM):   output;
+21708      TARGET="vote";
+MPRINT(EM_DIAGRAM):   TARGET="vote";
+21709      KEY="DECDATA";
+MPRINT(EM_DIAGRAM):   KEY="DECDATA";
+21710      DATA="EMWS1.Ids_vote_DD";
+MPRINT(EM_DIAGRAM):   DATA="EMWS1.Ids_vote_DD";
+21711      output;
+MPRINT(EM_DIAGRAM):   output;
+21712      TARGET="vote";
+MPRINT(EM_DIAGRAM):   TARGET="vote";
+21713      KEY="DECMETA";
+MPRINT(EM_DIAGRAM):   KEY="DECMETA";
+21714      DATA="EMWS1.Ids_vote_DM";
+MPRINT(EM_DIAGRAM):   DATA="EMWS1.Ids_vote_DM";
+21715      output;
+MPRINT(EM_DIAGRAM):   output;
+21716      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: The data set EMWS1.IDS_EMINFO has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: View EMWS1.IDS_DATA.VIEW used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.03 seconds
+      
+21717      data EMWS1.Ids_CMeta_DATA;
+MPRINT(EM_DIAGRAM):    data EMWS1.Ids_CMeta_DATA;
+21718      set EMWS1.Ids_VariableSet;
+MPRINT(EM_DIAGRAM):   set EMWS1.Ids_VariableSet;
+21719      drop DROP;
+MPRINT(EM_DIAGRAM):   drop DROP;
+21720      where DROP='N';
+MPRINT(EM_DIAGRAM):   where DROP='N';
+21721      run;
+MPRINT(EM_DIAGRAM):   run;
+
+NOTE: There were 27 observations read from the data set EMWS1.IDS_VARIABLESET.
+      WHERE DROP='N';
+NOTE: The data set EMWS1.IDS_CMETA_DATA has 27 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+MPRINT(EM_DIAGRAM):    proc printto;
+MPRINT(EM_DIAGRAM):   run;

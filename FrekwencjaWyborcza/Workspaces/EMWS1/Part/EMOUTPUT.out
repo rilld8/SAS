@@ -1,0 +1,83 @@
+*------------------------------------------------------------*
+Użytkownik:          rilld8
+Data:                30 grudnia 2016
+Czas:                08:20:58
+*------------------------------------------------------------*
+* Wynik uczenia
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Podsumowanie zmiennych
+ 
+           Poziom       Liczba
+ Rola      miary      wystąpień
+ 
+COST      INTERVAL         1
+INPUT     INTERVAL        22
+INPUT     NOMINAL          3
+TARGET    BINARY           1
+ 
+ 
+ 
+ 
+Podsumowanie partycjonowania
+ 
+                                     Liczba
+Typ                Zbiór           obserwacji
+ 
+DATA        EMWS1.Ids_DATA            2806
+TRAIN       EMWS1.Part_TRAIN          1681
+VALIDATE    EMWS1.Part_VALIDATE        561
+TEST        EMWS1.Part_TEST            564
+
+
+*------------------------------------------------------------*
+* Wynik scoringu
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Wynik raportu
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Statystyki opisowe klasyfikujących zmiennych celu
+ 
+Dane=DATA
+ 
+            Wartość      wartość         Liczba
+Zmienna    liczbowa    sformatowana    wystąpień    Procent              Etykieta
+ 
+ vote          2           No              462      16.4647    Voted last national election
+ vote          1           Yes            2344      83.5353    Voted last national election
+ 
+ 
+Dane=TEST
+ 
+            Wartość      wartość         Liczba
+Zmienna    liczbowa    sformatowana    wystąpień    Procent              Etykieta
+ 
+ vote          2           No              94       16.6667    Voted last national election
+ vote          1           Yes            470       83.3333    Voted last national election
+ 
+ 
+Dane=TRAIN
+ 
+            Wartość      wartość         Liczba
+Zmienna    liczbowa    sformatowana    wystąpień    Procent              Etykieta
+ 
+ vote          2           No              276      16.4188    Voted last national election
+ vote          1           Yes            1405      83.5812    Voted last national election
+ 
+ 
+Dane=VALIDATE
+ 
+            Wartość      wartość         Liczba
+Zmienna    liczbowa    sformatowana    wystąpień    Procent              Etykieta
+ 
+ vote          2           No              92       16.3993    Voted last national election
+ vote          1           Yes            469       83.6007    Voted last national election
